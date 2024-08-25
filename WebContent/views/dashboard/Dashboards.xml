@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE xml>
+<net.aditri.dashboard.config>
+<DBConfigs>
+	<DBConfig ConString="jdbc:oracle:thin:@192.168.210.98:1521:orcl" DBServer="ORACLE" Driver="oracle.jdbc.driver.OracleDriver" Name="PRP-CON" PWD="mjlyth" PWDEncrypt="false" User="mjl_yth"/>
+	<DBConfig ConString="jdbc:mysql://localhost:3306/northwind" DBServer="MYSQL" Driver="com.mysql.jdbc.Driver" Name="MYSQL-CON" PWD="821216" PWDEncrypt="false" User="deepak"/>
+	<DBConfig ConString="jdbc:oracle:thin:@192.168.210.98:1521:orcl" DBServer="ORACLE" Driver="oracle.jdbc.driver.OracleDriver" Name="MJLTEST-CON" PWD="mjlyth" PWDEncrypt="false" User="mjl_yth"/>
+	<DBConfig ConString="jdbc:oracle:thin:@192.168.0.208:1521:localdb" DBServer="ORACLE" Driver="oracle.jdbc.driver.OracleDriver" Name="UNFTEST-CON" PWD="DPDC208PP" PWDEncrypt="false" User="DPDC"/>
+	<DBConfig ConString="jdbc:oracle:thin:@//192.168.200.23:1521/prepaydb.dpdc.org.bd" DBServer="ORACLE" Driver="oracle.jdbc.driver.OracleDriver" Name="UNF-CON" PWD="PrePaid132" PWDEncrypt="false" User="prepaid1"/>
+</DBConfigs>
+<Dashboards>
+  <Dashboard Description="Tariff-wise Customers,Customers who do not have vending in last three months" Id="sales/daily-sales" Title="Customer statistics in Azimpur Lalbag">
+    <Layout><![CDATA[
+    <div class="row-fluid">
+    	<div class="span6">
+    		<div class='anet-widget' anet-id='widget4' anet-dashboard='common/noofvending' anet-widget='totalvending' anet-contentonly="true"></div>
+    	</div>
+    	<div class="span6">
+    		<div class='anet-widget' anet-id='widget2' anet-dashboard='common/noofvending' anet-widget='widget2'></div>
+    	</div>
+    </div>
+    <div class="row-fluid">
+    	<div class="span6">
+    		<div class='anet-widget' anet-id='widget3' anet-widget="widget2"></div>
+    	</div>
+    	<div class="span6">
+    		<div class='anet-widget' anet-id='widget1' anet-dashboard='common/noofvending' anet-widget="widget3"></div>
+    	</div>
+    </div>
+    ]]></Layout> 
+    <Widgets>
+      <Widget Id="widget2">
+		<HighChart Id="chart1" RenderTo="widget2" SeriesColumn="Demand_Charge,Service_Charge" XAxis="Vending Agent">
+			<Chart>{type:'line'}</Chart>
+			<Title>{text:'Azimpur Vending Summery',style: { 'color': '#f01616', 'fontSize': '16px' }}</Title>
+			<SubTitle>{text:''}</SubTitle>
+			<PlotOptions>{line: {pointPadding: 0.2,borderWidth: 0}}</PlotOptions>
+			<SeriesColumn><![CDATA[
+			Demand Charge,Service Charge,VAT
+			]]></SeriesColumn>
+			<yAxis>{min: 0,title: {text: 'Cost (Taka)'}}</yAxis>
+			<ToolTip><![CDATA[
+			{headerFormat: '<span style=font-size:10px>{point.key}</span><table>',
+			pointFormat: '<tr><td style=color:{series.color};padding:0>{series.name}: </td><td style=padding:0><b>{point.y:.0f} &#x9f3;</b></td></tr>',
+			footerFormat: '</table>',
+			shared: true,
+			useHTML: true}
+			]]></ToolTip>
+			<Init><![CDATA[
+			
+			]]></Init>
+			<DataSource ConnectionName="PRP-CON" SourceType="SQLView">
+			  <View GroupBy="Vending_Agent" Name="AZIMPUR_VENDING_BY_AGENT">
+				<Select><![CDATA[
+				  Vending_Agent "Vending Agent",SUM(Demand_Charge) "Demand Charge",SUM(Service_Charge) "Service Charge",SUM(VAT) VAT
+				]]></Select>
+				<Where><![CDATA[
+				  Vending_Agent IS NOT NULL AND to_char(buy_date,'YYYYMMDD') between '20190101' AND  '20190110' 
+				]]></Where>
+			  </View>
+			</DataSource>
+		</HighChart>
+	</Widget>
+  </Widgets>
+  </Dashboard>
+  <Dashboard Description="Collection by bank" Id="pos/dailyvending" Title="Bank Statistics">
+    <Layout><![CDATA[
+    <div class="row-fluid">
+    	<div class="span6">
+    		<div class='anet-widget' anet-id='widget1' anet-widget="widget1"></div>
+    	</div>
+    	<div class="span6">
+    		<div class='anet-widget' anet-id='widget4' anet-dashboard='common/noofvending' anet-widget='totalvending'></div>
+    	</div>
+    </div> 
+	]]></Layout> 
+    <Widgets>
+      
+      <Widget Id="widget1">
+		<HighChart Id="chart1" RenderTo="widget1" SeriesColumn="Demand_Charge,Service_Charge" XAxis="Vending Agent">
+			<Chart>{type:'column'}</Chart>
+			<Title>{text:'Azimpur Vending Summery by Agent',style: { 'color': '#f01616', 'fontSize': '18px' }}</Title>
+			<SubTitle>{text:''}</SubTitle>
+			<PlotOptions>{line: {pointPadding: 0.2,borderWidth: 0}}</PlotOptions>
+			<SeriesColumn><![CDATA[
+			Demand Charge,Service Charge,VAT
+			]]></SeriesColumn>
+			<yAxis>{min: 0,title: {text: 'Cost (Taka)'}}</yAxis>
+			<ToolTip><![CDATA[
+			{headerFormat: '<span style=font-size:10px>{point.key}</span><table>',
+			pointFormat: '<tr><td style=color:{series.color};padding:0>{series.name}: </td><td style=padding:0><b>{point.y:.0f} &#x9f3;</b></td></tr>',
+			footerFormat: '</table>',
+			shared: true,
+			useHTML: true}
+			]]></ToolTip>
+			<Init><![CDATA[
+			
+			]]></Init>
+			<DataSource ConnectionName="PRP-CON" SourceType="SQLView">
+			  <View GroupBy="Vending_Agent" Name="AZIMPUR_VENDING_BY_AGENT">
+				<Select><![CDATA[
+				  Vending_Agent "Vending Agent",SUM(Demand_Charge) "Demand Charge",SUM(Service_Charge) "Service Charge",SUM(VAT) VAT
+				]]></Select>
+				<Where><![CDATA[
+				  Vending_Agent IS NOT NULL AND to_char(buy_date,'YYYYMMDD') between '20170101' AND  '20170101' 
+				]]></Where>
+			  </View>
+			</DataSource>
+		</HighChart>
+	</Widget>
+  </Widgets>
+  </Dashboard>
+  <Dashboard Description="Collection by bank" Id="pos/dailyvending1" Title="Bank Statistics">
+    <Layout><![CDATA[
+    <div class="ct-row row-fluid">
+    	<div class="span6"><div id="widget1" class="ct-widget widget widget-box"></div></div>
+    	<div class="span6"><div id="widget2" class="ct-widget widget widget-box"></div></div>
+    </div> 
+	]]></Layout> 
+    <Widgets>
+      <Widget Id="widget1">
+      	<HighChart Id="chart1" RenderTo="widget1" SeriesColumn="UnitsInStock,UnitPrice" XAxis="ProductName">
+      		<Chart>{type:'bar'}</Chart>
+      		<Title>{text:'Monthly Average Rainfall',style: { 'color': '#f01616', 'fontSize': '18px' }}</Title>
+      		<SubTitle>{text:'Source: WorldClimate.com'}</SubTitle>
+      		<PlotOptions>{bar: {allowPointSelect: true, cursor: 'pointer',dataLabels: {enabled: true} }}</PlotOptions>
+      		<xAxis>{categories: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],crosshair: true}</xAxis>
+      		<yAxis>{min: 0,title: {text: 'Rainfall (mm)'}}</yAxis>
+      		<ToolTip><![CDATA[
+      		{headerFormat: '<span style=font-size:10px>{point.key}</span><table>',
+        	pointFormat: '<tr><td style=color:{series.color};padding:0>{series.name}: </td><td style=padding:0><b>{point.y:.1f} mm</b></td></tr>',
+        	footerFormat: '</table>',
+        	shared: true,
+        	useHTML: true}
+      		]]></ToolTip>
+      		<Init><![CDATA[
+			
+      		]]></Init>
+      		<DataSource ConnectionName="MYSQL-CON" SourceType="SQLTable">
+	          <Table Name="products">
+	          	<Select><![CDATA[
+	              ProductName,UnitsInStock,UnitPrice
+	            ]]></Select>
+	          	<Where><![CDATA[
+	              ProductId<20
+	            ]]></Where>
+	          </Table>
+	        </DataSource>
+      	</HighChart>
+      </Widget>
+      <Widget Id="widget2">
+		<HighChart Id="chart1" RenderTo="widget2" SeriesColumn="Demand_Charge,Service_Charge" XAxis="Vending Agent">
+			<Chart>{type:'line'}</Chart>
+			<Title>{text:'Azimpur Vending Summery by Agent',style: { 'color': '#f01616', 'fontSize': '18px' }}</Title>
+			<SubTitle>{text:'Source: Azimpur Prepaid Test Server'}</SubTitle>
+			<PlotOptions>{line: {pointPadding: 0.2,borderWidth: 0}}</PlotOptions>
+			<SeriesColumn><![CDATA[
+			Demand Charge,Service Charge,VAT
+			]]></SeriesColumn>
+			<yAxis>{min: 0,title: {text: 'Cost (Taka)'}}</yAxis>
+			<ToolTip><![CDATA[
+			{headerFormat: '<span style=font-size:10px>{point.key}</span><table>',
+			pointFormat: '<tr><td style=color:{series.color};padding:0>{series.name}: </td><td style=padding:0><b>{point.y:.0f} &#x9f3;</b></td></tr>',
+			footerFormat: '</table>',
+			shared: true,
+			useHTML: true}
+			]]></ToolTip>
+			<Init><![CDATA[
+			
+			]]></Init>
+			<DataSource ConnectionName="PRP-CON" SourceType="SQLView">
+			  <View GroupBy="Vending_Agent" Name="AZIMPUR_VENDING_BY_AGENT">
+				<Select><![CDATA[
+				  Vending_Agent "Vending Agent",SUM(Demand_Charge) "Demand Charge",SUM(Service_Charge) "Service Charge",SUM(VAT) VAT
+				]]></Select>
+				<Where><![CDATA[
+				  Vending_Agent IS NOT NULL AND to_char(buy_date,'YYYYMMDD') between '20170101' AND  '20170630' 
+				]]></Where>
+			  </View>
+			</DataSource>
+		</HighChart>
+	</Widget>
+  </Widgets>
+  </Dashboard>
+  <Dashboard Description="TMS Freight Accruals by Dim Report based on Date, GL Account, Cost Center, Department, SBU, Salesgroup and Brand. test" Id="mis/prepaid-statastics" ProcedureName="RC_AP_1_1_1_TMS_Freight_Accruals_by_DimRpt" RDLName="AP_1_1_1_TMS_Freight_Accruals_by_Dim" Title="AP-1-1-1-TMS Freight Accural By Dim">
+    <Layout><![CDATA[
+    <div class="ct-row row-fluid">
+    	<div class="span6"><div id="widget1" class="ct-widget widget widget-box"></div></div>
+    	<div class="span6"><div id="widget2" class="ct-widget widget widget-box"></div></div>
+    </div>  
+	]]></Layout> 
+    <Widgets>
+      <Widget Id="widget1">
+      	<HighChart Id="chart1" RenderTo="widget1" SeriesColumn="UnitsInStock,UnitPrice" XAxis="ProductName">
+      		<Chart>{type:'line'}</Chart>
+      		<Title>{text:'Monthly Average Rainfall',style: { 'color': '#f01616', 'fontSize': '18px' }}</Title>
+      		<SubTitle>{text:'Source: WorldClimate.com'}</SubTitle>
+      		<PlotOptions>{line: {pointPadding: 0.2,borderWidth: 0}}</PlotOptions>
+      		<xAxis>{categories: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],crosshair: true}</xAxis>
+      		<yAxis>{min: 0,title: {text: 'Rainfall (mm)'}}</yAxis>
+      		<ToolTip><![CDATA[
+      		{headerFormat: '<span style=font-size:10px>{point.key}</span><table>',
+        	pointFormat: '<tr><td style=color:{series.color};padding:0>{series.name}: </td><td style=padding:0><b>{point.y:.1f} mm</b></td></tr>',
+        	footerFormat: '</table>',
+        	shared: true,
+        	useHTML: true}
+      		]]></ToolTip>
+      		<Init><![CDATA[
+			
+      		]]></Init>
+      		<DataSource ConnectionName="MYSQL-CON" SourceType="SQLTable">
+	          <Table Name="products">
+	          	<Select><![CDATA[
+	              ProductName,UnitsInStock,UnitPrice
+	            ]]></Select>
+	          	<Where><![CDATA[
+	              ProductId<20
+	            ]]></Where>
+	          </Table>
+	        </DataSource>
+      	</HighChart>
+      </Widget>
+      <Widget Id="widget2">
+      	<HighChart Id="chart1" RenderTo="widget2" SeriesColumn="standard_cost,list_price" XAxis="product_name">
+      		<Chart>{type:'area'}</Chart>
+      		<Title>{text:'Monthly Average Rainfall',style: { 'color': '#f01616', 'fontSize': '18px' }}</Title>
+      		<SubTitle>{text:'Source: WorldClimate.com'}</SubTitle>
+      		<PlotOptions>{area: {pointPadding: 0.2,borderWidth: 0}}</PlotOptions>
+      		<xAxis>{categories: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],crosshair: true}</xAxis>
+      		<yAxis>{min: 0,title: {text: 'Rainfall (mm)'}}</yAxis>
+      		<ToolTip><![CDATA[
+      		{headerFormat: '<span style=font-size:10px>{point.key}</span><table>',
+        	pointFormat: '<tr><td style=color:{series.color};padding:0>{series.name}: </td><td style=padding:0><b>{point.y:.1f} mm</b></td></tr>',
+        	footerFormat: '</table>',
+        	shared: true,
+        	useHTML: true}
+      		]]></ToolTip>
+      		<Init><![CDATA[
+			
+      		]]></Init>
+      		<DataSource ConnectionName="MYSQL-CON" SourceType="SQLTable">
+	          <Table Name="products">
+	          	<Select><![CDATA[
+	              ProductName,UnitsInStock,UnitPrice
+	            ]]></Select>
+	          	<Where><![CDATA[
+	              ProductId<20
+	            ]]></Where>
+	          </Table>
+	        </DataSource>
+      	</HighChart>
+      </Widget>
+  </Widgets>
+  </Dashboard>
+  
+  
+  
+  <Dashboard Description="Tariff-wise Customers in unified" Id="stat/statistics" Title="Tariff-wise Customer in Unified">
+    <Layout><![CDATA[
+    <div class="row-fluid">
+    	<div class="span12"><div class='anet-widget' anet-id='widget1' anet-widget="widget1"></div></div>
+    </div>
+    ]]></Layout> 
+    <Widgets>
+      
+      <Widget Id="widget1">
+		<HighChart Id="chart1"  SeriesColumn="customer" XAxis="program_name">
+			<Chart>
+			{
+      		type:'bar',
+      		backgroundColor: {
+       linearGradient: [0, 0, 500, 500],
+       stops: [
+         [0, 'rgb(255, 255, 255)'],
+         [1, 'rgb(200, 200, 255)']
+       ]
+     },
+     polar: true
+      		}
+			</Chart>
+      		<Title>{text:'Unified Tariff-wise Customer',style: { 'color': '#f01616', 'fontSize': '18px' }}</Title>
+      		<SubTitle>{text:'Source: Unified Production'}</SubTitle>
+      		<PlotOptions>{bar: {allowPointSelect: true, cursor: 'pointer',dataLabels: {enabled: true} }}</PlotOptions>
+      		<yAxis>{min: 0,title: {text: 'Number of Customer'}}</yAxis>
+      		<ToolTip><![CDATA[
+      		{headerFormat: '<span style=font-size:10px>{point.key}</span><table>',
+        	pointFormat: '<tr><td style=color:{series.color};padding:0>{series.name}: </td><td style=padding:0><b>{point.y:.0f}</b></td></tr>',
+        	footerFormat: '</table>',
+        	shared: true,
+        	useHTML: true}
+      		]]></ToolTip>
+      		<Init><![CDATA[
+			
+      		]]></Init>
+			<DataSource ConnectionName="UNF-CON" SourceType="SQLInline">
+	          <Inline>
+	          	<SQL><![CDATA[
+        	Select t.program_name, t.program_id, count(distinct(t2.hh)) customer
+From da_bj t1, tariff_program t,da_yh t2
+Where t1.tariff_program_id = t.program_id
+and t1.hh = t2.hh
+-- and t1.dwdm='50301'
+group by t.program_id, t.program_name
+order by customer desc
+	          	]]></SQL>
+	          </Inline>
+	        </DataSource>
+		</HighChart>
+	</Widget>
+  </Widgets>
+  </Dashboard>
+  
+  
+  
+  <Dashboard Description="Common Dashboards" Id="common/noofvending" Title="">
+    <Widgets>
+      <Widget Id="widget1">
+      	<HighChart Id="chart1"  SeriesColumn="UnitsInStock,UnitPrice" XAxis="ProductName">
+      		<Chart>{type:'area'}</Chart>
+      		<Title>{text:'Top Products',style: { 'color': '#f01616', 'fontSize': '18px' }}</Title>
+      		<SubTitle>{text:''}</SubTitle>
+      		<PlotOptions>{line: {pointPadding: 0.2,borderWidth: 0}}</PlotOptions>
+      		<SeriesColumn><![CDATA[
+			UnitsInStock,UnitPrice
+			]]></SeriesColumn>
+			<yAxis>{min: 0,title: {text: 'Cost (Taka)'}}</yAxis>
+      		<ToolTip><![CDATA[
+      		{headerFormat: '<span style=font-size:10px>{point.key}</span><table>',
+        	pointFormat: '<tr><td style=color:{series.color};padding:0>{series.name}: </td><td style=padding:0><b>{point.y:.1f} mm</b></td></tr>',
+        	footerFormat: '</table>',
+        	shared: true,
+        	useHTML: true}
+      		]]></ToolTip>
+      		<Init><![CDATA[
+			
+      		]]></Init>
+      		<DataSource ConnectionName="MYSQL-CON" SourceType="SQLTable">
+	          <Table Name="products">
+	          	<Select><![CDATA[
+	              ProductName,UnitsInStock,UnitPrice
+	            ]]></Select>
+	          	<Where><![CDATA[
+	              ProductId <20
+	            ]]></Where>
+	          </Table>
+	        </DataSource>
+      	</HighChart>
+      </Widget>
+      <Widget Id="widget2">
+      	<HighChart Id="chart1"  SeriesColumn="UnitsInStock,UnitPrice" XAxis="ProductName">
+      		<Chart>
+      		{
+      		type:'bar',
+      		backgroundColor: {
+       linearGradient: [0, 0, 500, 500],
+       stops: [
+         [0, 'rgb(255, 255, 255)'],
+         [1, 'rgb(200, 200, 255)']
+       ]
+     },
+     polar: true
+      		}
+      		</Chart>
+      		<Title>{text:'Monthly Average Rainfall',style: { 'color': '#f01616', 'fontSize': '18px' }}</Title>
+      		<SubTitle>{text:''}</SubTitle>
+      		<PlotOptions>{line: {pointPadding: 0.2,borderWidth: 0}}</PlotOptions>
+      		<SeriesColumn><![CDATA[
+			UnitsInStock,UnitPrice
+			]]></SeriesColumn>
+			<yAxis>{min: 0,title: {text: 'Cost (Taka)'}}</yAxis>
+      		<ToolTip><![CDATA[
+      		{headerFormat: '<span style=font-size:10px>{point.key}</span><table>',
+        	pointFormat: '<tr><td style=color:{series.color};padding:0>{series.name}: </td><td style=padding:0><b>{point.y:.1f} mm</b></td></tr>',
+        	footerFormat: '</table>',
+        	shared: true,
+        	useHTML: true}
+      		]]></ToolTip>
+      		<Init><![CDATA[
+			
+      		]]></Init>
+      		<DataSource ConnectionName="MYSQL-CON" SourceType="SQLInline">
+	          <Inline>
+	          	<SQL><![CDATA[
+	          	SELECT ProductName,UnitsInStock,UnitPrice FROM products  WHERE 1=1  AND  productID<20
+	          	]]></SQL>
+	          </Inline>
+	        </DataSource>
+      	</HighChart>
+      </Widget>
+      <Widget Id="widget3">
+      	<HighChart Id="chart1"  SeriesColumn="UnitsInStock,UnitPrice" XAxis="ProductName">
+      		<Chart>
+      		{
+      		type:'area',
+      		backgroundColor: {
+       linearGradient: [0, 0, 500, 500],
+       stops: [
+         [0, 'rgb(255, 255, 255)'],
+         [1, 'rgb(200, 200, 255)']
+       ]
+     },
+     polar: true
+      		}
+      		</Chart>
+      		<Title>{text:'Monthly Average Rainfall',style: { 'color': '#f01616', 'fontSize': '18px' }}</Title>
+      		<SubTitle>{text:''}</SubTitle>
+      		<PlotOptions>{line: {pointPadding: 0.2,borderWidth: 0}}</PlotOptions>
+      		<SeriesColumn><![CDATA[
+			UnitsInStock,UnitPrice
+			]]></SeriesColumn>
+			<yAxis>{min: 0,title: {text: 'Cost (Taka)'}}</yAxis>
+      		<ToolTip><![CDATA[
+      		{headerFormat: '<span style=font-size:10px>{point.key}</span><table>',
+        	pointFormat: '<tr><td style=color:{series.color};padding:0>{series.name}: </td><td style=padding:0><b>{point.y:.1f} mm</b></td></tr>',
+        	footerFormat: '</table>',
+        	shared: true,
+        	useHTML: true}
+      		]]></ToolTip>
+      		<Init><![CDATA[
+			
+      		]]></Init>
+      		<DataSource ConnectionName="MYSQL-CON" SourceType="SQLInline">
+	          <Inline>
+	          	<SQL><![CDATA[
+	          	SELECT ProductName,UnitsInStock,UnitPrice FROM products  WHERE 1=1  AND  productID<20
+	          	]]></SQL>
+	          </Inline>
+	        </DataSource>
+      	</HighChart>
+      </Widget>
+      <Widget Id="totalvending">
+      	<HighChart Id="chart1" ChartType="pie"  SeriesColumn="Total_vending" XAxis="operator_name">
+      		<Chart>{type:'pie',backgroundColor: '#FCFFC5'}</Chart>
+      		<Title>{text:'Today\\'s Vending',style: { 'color': '#f01616', 'fontSize': '18px' }}</Title>
+      		<SubTitle>{text:''}</SubTitle>
+      		<PlotOptions>{pie: {innerSize:100, depth:45, allowPointSelect: true,cursor: 'pointer',dataLabels: {enabled: true,format: '<b>{point.name}</b>: {point.percentage:.1f} %',connectorColor: 'silver'}}}</PlotOptions>
+			<yAxis>{min: 0,title: {text: 'No of Vending'}}</yAxis>
+      		<ToolTip><![CDATA[
+      		{ pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>' }
+      		]]></ToolTip>
+      		<Init><![CDATA[
+			
+      		]]></Init>
+      		<DataSource ConnectionName="PRP-CON" SourceType="SQLInline">
+	          <Inline>
+	          	<SQL><![CDATA[
+	          	select operator_name,count(buy_guid) Total_vending FROM
+(
+select B.ACTUAL_COLLECTOR,B.DB_DOT,B.OPERATOR_NOCS,to_char(A.buy_date,'yyyymmdd') bdate,A.buy_guid,A.OPERATOR_NAME from t_run_buy_elec_detail A
+inner join T_SYS_OPERATOR B on A.OPERATOR_GUID=B.OPERATOR_GUID
+where A.buy_date>=(trunc(sysdate)-400) 
+and A.OPERATOR_REMARK like '%Sale%'
+) T
+GROUP BY operator_name,ACTUAL_COLLECTOR,DB_DOT,OPERATOR_NOCS
+	          	]]></SQL>
+	          </Inline>
+	        </DataSource>
+      	</HighChart>
+      </Widget>
+      
+      
+      <Widget Id="widgetTransparent">
+		<HighChart Id="chart1" RenderTo="widget1" SeriesColumn="Demand_Charge,Service_Charge" XAxis="Vending Agent">
+			<Chart><![CDATA[
+			{
+				type:'column',backgroundColor: 'transparent',
+				style: {
+		            fontFamily: '\\'Unica One\\', sans-serif'
+		        }
+			}
+			]]></Chart>
+			<Title>{text:''}</Title>
+			<SubTitle>{text:''}</SubTitle>
+			<PlotOptions><![CDATA[
+			{
+				series: {
+		            borderWidth: 0,
+		            dataLabels: {enabled: false}
+		        }
+			}
+			]]></PlotOptions>
+			<SeriesColumn><![CDATA[
+			Demand Charge,Service Charge,VAT
+			]]></SeriesColumn>
+			<xAxis><![CDATA[
+			{
+				type: 'category',
+		        gridLineColor: '#707073',
+		        labels: {
+		            style: {color: '#E0E0E3'}
+		        },
+		        lineColor: '#707073',
+		        minorGridLineColor: '#505053',
+		        tickColor: '#707073',
+		        title: {
+		        	style: {color: '#A0A0A3'}
+		        }
+			}
+			]]></xAxis>
+			<yAxis><![CDATA[
+			{
+			 title: {
+		            text: 'Cost (Tk)',
+		            style: { color: '#A0A0A3' }
+		        },
+		        gridLineColor: '#4e4d4d',
+		        labels: {
+		            style: { color: '#E0E0E3' }
+		        },
+		        lineColor: '#4e4d4d',
+		        minorGridLineColor: '#4e4d4d',
+		        tickColor: '#707073',
+		        tickWidth: 1
+	        }
+			]]></yAxis>
+			<legend>
+			{
+				itemStyle: {
+		            color: '#A0A0A3'
+		        }
+			}
+			</legend>
+			<ToolTip><![CDATA[
+			{headerFormat: '<span style=font-size:10px>{point.key}</span><table>',
+			pointFormat: '<tr><td style=color:{series.color};padding:0>{series.name}: </td><td style=padding:0><b>{point.y:.0f} &#x9f3;</b></td></tr>',
+			footerFormat: '</table>',
+			shared: true,
+			useHTML: true}
+			]]></ToolTip>
+			<Init><![CDATA[
+			
+			]]></Init>
+			<DataSource ConnectionName="PRP-CON" SourceType="SQLView">
+			  <View GroupBy="Vending_Agent" Name="AZIMPUR_VENDING_BY_AGENT">
+				<Select><![CDATA[
+				  Vending_Agent "Vending Agent",SUM(Demand_Charge) "Demand Charge",SUM(Service_Charge) "Service Charge",SUM(VAT) VAT
+				]]></Select>
+				<Where><![CDATA[
+				  Vending_Agent IS NOT NULL AND to_char(buy_date,'YYYYMMDD') between '20170101' AND  '20170101' 
+				]]></Where>
+			  </View>
+			</DataSource>
+		</HighChart>
+	</Widget>
+	
+	<Widget Id="widgetPieTransparent">
+      	<HighChart Id="chart1" ChartType="pie"  SeriesColumn="Total_vending" XAxis="operator_name">
+      		<Chart>
+      		{
+      		type:'pie',backgroundColor: 'transparent',
+      		 plotBackgroundColor: null,
+        	 plotBorderWidth: 1,
+        	 plotBorderColor: '#484747',
+        	 plotShadow: false,
+      		}
+      		</Chart>
+      		<Title>{text:''}</Title>
+      		<SubTitle>{text:''}</SubTitle>
+      		<PlotOptions>{
+      		pie: {innerSize:50, depth:10, allowPointSelect: true,cursor: 'pointer', borderColor:'#373b3e',dataLabels: {enabled: true,format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+      		,connectorColor: 'silver'
+      		,color:'#E0E0E3'}}
+      		}</PlotOptions>
+			<yAxis>{min: 0,title: {text: 'No of Vending'}}</yAxis>
+      		<ToolTip><![CDATA[
+      		{ pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>' }
+      		]]></ToolTip>
+      		<Init><![CDATA[
+			
+      		]]></Init>
+      		<DataSource ConnectionName="PRP-CON" SourceType="SQLInline">
+	          <Inline>
+	          	<SQL><![CDATA[
+	          	select operator_name,count(buy_guid) Total_vending FROM
+(
+select B.ACTUAL_COLLECTOR,B.DB_DOT,B.OPERATOR_NOCS,to_char(A.buy_date,'yyyymmdd') bdate,A.buy_guid,A.OPERATOR_NAME from t_run_buy_elec_detail A
+inner join T_SYS_OPERATOR B on A.OPERATOR_GUID=B.OPERATOR_GUID
+where A.buy_date>=(trunc(sysdate)-405) 
+and A.OPERATOR_REMARK like '%Sale%'
+) T
+GROUP BY operator_name,ACTUAL_COLLECTOR,DB_DOT,OPERATOR_NOCS
+	          	]]></SQL>
+	          </Inline>
+	        </DataSource>
+      	</HighChart>
+      </Widget>
+      
+  </Widgets>
+  </Dashboard>
+  
+</Dashboards>
+</net.aditri.dashboard.config>

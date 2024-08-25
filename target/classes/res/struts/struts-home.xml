@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="home-pkg" namespace="/"   extends="hibernate-default,auth-hib-pkg">
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
+		
+
+		
+		
+       
+		<action name="login" class="com.prp.actions.LoginAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref> <!-- For explicitly applying a interceptor this action will not inherit default interceptor that is mentioned in auth-hib-pkg  of struts-auth.xml file -->
+		    <result name="success" type="redirectAction"> <!-- PRG Pattern Has been applied  -->
+		        <param name="actionName">home</param>
+		        <param name="namespace">/</param>
+		    </result>
+			<result name="login">/login.jsp</result>
+		</action>
+		
+		
+		<action name="home" class="com.prp.actions.HomeAction">
+			<result name="adminhome" type="tiles">view.home</result>
+			<result name="userhome" type="tiles">view.myhome</result>
+		</action>
+		
+		
+		<action name="logout" method="logout" class="com.prp.actions.LoginAction">
+			<result name="success">/login.jsp</result>
+		</action>
+		
+		<action name="index" method="index" class="com.prp.actions.HomeAction">
+			<result name="success">/views/home/home.jsp</result>
+		</action>
+		
+		
+		
+	</package>
+</struts>

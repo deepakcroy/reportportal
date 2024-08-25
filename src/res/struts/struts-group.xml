@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="usergroup-pkg" namespace="/setup/group"   extends="hibernate-default,auth-hib-pkg">
+		<action name="list" method="list" class="com.prp.actions.GroupAction">
+			<result name="success">/views/group/index.jsp</result>
+		</action>
+		<action name="groupdatatable" method="groupDataTable" class="com.prp.actions.GroupAction"></action>
+		<action name="saveorupdateform" method="saveOrUpdateForm" class="com.prp.actions.GroupAction">
+			<result name="input">/views/group/createoredit.jsp</result>
+		</action>
+		<action name="saveorupdate" method="saveOrUpdate" class="com.prp.actions.GroupAction"/>
+	
+	</package>
+</struts>

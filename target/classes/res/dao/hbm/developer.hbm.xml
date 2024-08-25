@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	
+	<sql-query name="SQL_INSERT_UIDEF">
+		<![CDATA[
+			INSERT INTO RPT_UI_DEF
+            (
+
+             NAME
+            ,DESC
+            ,UIDEF
+            
+            ,STATUS
+            ,CREATEDBY
+            ,CREATEDAT
+            , MODIFIEDBY
+            , MODIFIEDAT
+            ) 
+            values
+            (
+     
+            :P_NAME
+            ,:P_DESC
+            ,:P_UIDEF
+            
+            ,:P_STATUS
+            ,:P_CREATEDBY
+            ,NOW()
+            ,:P_MODIFIEDBY
+            ,NOW()
+             )
+		]]>
+	</sql-query>
+	
+</hibernate-mapping>

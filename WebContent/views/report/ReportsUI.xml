@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<net.aditri.ui.config>
+<DBConfigs>
+	<DBConfig ConString="jdbc:oracle:thin:@192.168.210.98:1521:orcl" DBServer="ORACLE" Driver="oracle.jdbc.driver.OracleDriver" Name="PRP-CON" PWD="T0RJeE1qRTJZUzFrYVMxMGNpMXBMVzVsZEE9PQ==" PWDEncrypt="true" User="REPORTDB"/>
+	<DBConfig ConString="jdbc:oracle:thin:@192.168.200.13:1521:orcl" DBServer="ORACLE" Driver="oracle.jdbc.driver.OracleDriver" Name="MJLTEST-CON" PWD="MJL_YTH" PWDEncrypt="false" User="mjl_yth"/>
+	<DBConfig ConString="jdbc:oracle:thin:@192.168.0.223:1521:dpdcdb" DBServer="ORACLE" Driver="oracle.jdbc.driver.OracleDriver" Name="MIS-CON" PWD="WkhCa1l6VnRhWE0wTURBPVlTMWthUzEwY2kxcExXNWxkQT09" PWDEncrypt="true" User="mis"/>
+	<DBConfig ConString="jdbc:oracle:thin:@192.168.210.98:1521:orcl" DBServer="ORACLE" Driver="oracle.jdbc.driver.OracleDriver" Name="RPTDB-CON" PWD="821216" PWDEncrypt="false" User="REPORTDB"/>
+	<DBConfig ConString="jdbc:oracle:thin:@192.168.210.98:1521:orcl" DBServer="ORACLE" Driver="oracle.jdbc.driver.OracleDriver" Name="UNI-CON" PWD="821216" PWDEncrypt="false" User="UNICON"/>
+</DBConfigs>
+<Forms>
+  <Form Action="/" Description="POS Agent information."  RDLName="pos/pos_agent" ReportId="pos/pos-agent" ReportHeader="POS-Agent-Balance-1-1" ReportName="POS Agent Info">
+    <ReportBody><![CDATA[
+    
+    <div class="anet-checkbox" id="chkStatus" name="status" anet-label="Active?" anet-event="" anet-checked="" />
+	<div class="anet-dropdown" id="lstDealer" name="dealear_name" anet-label="Dealer" anet-event=""   />
+
+	  ]]></ReportBody>
+    <ReportControls>
+      <ReportControl AllowDefaultFilter="false" ControlType="DropDown" Id="lstDealer" NameField="DEALER_NAME" ValueField="DEALER_NAME">
+        <DataSource ConnectionName="MJLTEST-CON" SourceType="SQLTable">
+          <Table Name="T_POS_DEALER"/>
+        </DataSource>
+      </ReportControl>
+
+    </ReportControls>
+  </Form>
+  <Form Action="/" Description="Daily Vending by POS"  RDLName="pos/daily_vending_by_pos" ReportId="pos/daily-vending-by-pos" ReportHeader="Daily Vending By POS-1-2" ReportName="Daily Vending By POS">
+    <ReportBody><![CDATA[
+    
+    
+    <div class='anet-datepicker span4' id='dpDateFrom' name='dpDateFrom' anet-label='Date From' anet-format='mm/dd/yyyy' />
+    <div class='anet-datepicker span8' id='dpDateTo' name='dpDateTo' anet-label='Date To' anet-format='mm-dd-yyyy' />
+	
+	<div class="anet-dropdown" id="lstDealer" name="dealear_name" anet-label="Dealer" anet-event="" anet-datasource="Dealers"  />
+    <div class="anet-shuttle"  id="lstOperators" name="operator_name" anet-label="Operators" anet-event="" anet-datasource="POS-Operators" />
+    
+	  ]]></ReportBody>
+  </Form>
+  <Form Action="/" Description="Sales Report Based on Date Range, Operators.."  ReportId="sales/sales-stat" ReportHeader="Daily Sales By Operator-2-1" ReportName="">
+    <ReportBody><![CDATA[
+      
+    <div class='anet-datepicker' id='dpDateFrom' name='dpDateFrom' anet-label='Date From' />
+    <div class='anet-datepicker' id='dpDateTo' name='dpDateTo' anet-label='Date To' />
+	<div class="anet-shuttle"  id="lstStations" name="station_name" anet-label="Operating Stations" anet-event="" anet-datasource="Operating-Stations" />
+    <div class="anet-shuttle"  id="lstOperators" name="operator_name" anet-label="Operators" anet-event="" anet-datasource="Operators" />
+   
+    
+	  ]]></ReportBody>
+    
+  </Form>
+  <Form Action="/" Description="Sales Report Based on Date Range, Customer.."  ReportId="sales/daily-sales-by-customer" ReportHeader="Daily Sales By Customers-2-2" ReportName="">
+    <ReportBody><![CDATA[
+      
+    <div class='anet-datepicker' id='dpDateFrom' name='dpDateFrom' anet-label='Date From' />
+    <div class='anet-datepicker' id='dpDateTo' name='dpDateTo' anet-label='Date To' />
+    
+    <div class='anet-lookup' id='txtCustomerNo' name='cno' anet-label='Customer No' anet-event="" anet-datasource="Lookup-Customers"  />
+	<div class="anet-shuttle"  id="lstStations" name="station_name" anet-label="Operating Stations" anet-event="" anet-datasource="Operating-Stations" />
+    <div class="anet-shuttle"  id="lstOperators" name="operator_name" anet-label="Operators" anet-event="" anet-datasource="Operators" />
+   
+    
+	  ]]></ReportBody>
+    
+  </Form>
+  <Form Action="/" Description="Prepaid MIS Report"  ReportId="sales/mis-report" ReportHeader="Prepaid MIS Report-3-1" ReportName="">
+    <ReportBody><![CDATA[
+      
+    <div class='anet-datepicker' id='dpDateFrom' name='dpDateFrom' anet-label='Date From' />
+    <div class='anet-datepicker' id='dpDateTo' name='dpDateTo' anet-label='Date To' />
+	
+    <div class="anet-shuttle"  id="lstOperators" name="operator_name" anet-label="Operators" anet-event="" anet-datasource="Operators" />
+   
+    
+	  ]]></ReportBody>
+    
+  </Form>
+  <Form Action="/" Description="Azimpur and Lalbag's New Customer Data can be retrived from here"  ReportId="masterdata/new-customer-data" ReportHeader="New Customer Data" ReportName="customers/new_customer_data">
+    <ReportBody><![CDATA[
+    <div class='anet-lookup' id='txtCustomerNo' name='cno' anet-label='Customer No' anet-event="" anet-datasource="Lookup-Customers"  />
+    <div class='anet-shuttle' id='lstLocation' name='loc' anet-label='Location' anet-event="" anet-datasource="azm_location" />
+	  ]]></ReportBody>
+  </Form>
+</Forms>
+<AnetDatasource>
+      <ReportControl ControlType="Shuttle" Id="POS-Operators" NameField="OPERATOR_NAME" ValueField="OPERATOR_NAME">
+        <DataSource ConnectionName="MJLTEST-CON" SourceType="SQLInline">
+          <Inline>
+          	<SQL><![CDATA[
+          select A.OPERATOR_GUID,B.OPERATOR_ID,B.OPERATOR_NAME,B.OPERATOR_NOCS,B.CLOSE_FLAG STATUS,A.CREATE_TIME,A.OPER_BALANCE,A.OPER_TOTAL_AMOUNT
+,B.ACTUAL_COLLECTOR,B.DB_DOT POS_LOCATION,C.DEALER_NAME
+from t_pos_pos_operator A inner join T_SYS_OPERATOR B on
+A.operator_guid=B.OPERATOR_GUID 
+inner join t_pos_dealer C ON A.DEALER_GUID=C.DEALER_GUID
+          ]]></SQL>
+          </Inline>
+        </DataSource>
+      </ReportControl>
+      <ReportControl ControlType="Shuttle" Id="Operators" NameField="NODE_NAME" ValueField="OPERATOR_NAME">
+        <DataSource ConnectionName="MJLTEST-CON" SourceType="SQLInline">
+          <Inline>
+          	<SQL><![CDATA[
+          SELECT A.OPERATOR_GUID,A.OPERATOR_ID,A.OPERATOR_NAME,A.SEX,A.CLOSE_FLAG,A.MODIFY_NODE_NO,A.DB_FLAG,B.GROUP_GUID,B.GROUP_NAME,C.NODE_NO,C.NODE_NAME,N.SUB_NAME,N.SUB_NO,U.NODE_NO COM_NO,U.NODE_NAME COM_NAME,A.SUB_SYS
+FROM T_SYS_OPERATOR A INNER JOIN T_SYS_GROUP B ON A.GROUP_LIST=B.GROUP_GUID 
+INNER JOIN T_CODE_UNIT_NET C ON C.NODE_NO=A.NODE_NO 
+INNER JOIN T_SYS_SUBNAME_I18N N ON  SUBSTR(A.SUB_SYS,0,2)= N.SUB_NO   
+INNER JOIN T_CODE_UNIT_NET U ON  SUBSTR(A.SUB_SYS, LENGTH(A.SUB_SYS)-3, 4)= U.NODE_NO  WHERE  I18N='en'
+          ]]></SQL>
+          </Inline>
+        </DataSource>
+      </ReportControl>
+      <ReportControl ControlType="Shuttle" Id="Operating-Stations" NameField="NOCS" ValueField="UVS">
+        <DataSource ConnectionName="MJLTEST-CON" SourceType="SQLInline">
+          <Inline>
+          	<SQL><![CDATA[
+          SELECT  A.NODE_NO, A.FATHER_NODE_NO, A.NODE_NAME NOCS, B.NODE_NAME UVS,A.SUB_SYS from T_CODE_UNIT_NET A
+INNER JOIN T_CODE_UNIT_NET B ON A.NODE_NO=B.FATHER_NODE_NO
+WHERE A.SUB_SYS='050031' AND A.NODE_NO NOT IN ('0031','003101')
+          ]]></SQL>
+          </Inline>
+        </DataSource>
+      </ReportControl>
+      <ReportControl AllowDefaultFilter="false" ControlType="DropDown" Id="Dealers" NameField="DEALER_NAME" ValueField="DEALER_NAME">
+        <DataSource ConnectionName="MJLTEST-CON" SourceType="SQLTable">
+          <Table Name="T_POS_DEALER"/>
+        </DataSource>
+      </ReportControl>
+      
+	  <ReportControl AllowDefaultFilter="false" ControlType="Lookup" FieldSelection="Multiple" Id="Lookup-Customers" NameField="CUSTOMER_NAME" ValueField="CUSTOMER_NO">
+	        <DataSource ConnectionName="MJLTEST-CON" SourceType="SQLTable">
+	          <Table Name="t_run_customer">
+	          </Table>
+	        </DataSource>
+	  </ReportControl>
+      <ReportControl AllowDefaultFilter="false" ControlType="Shuttle" Id="azm_location" NameField="REMARK" ValueField="LOCATION_NAME">
+        <DataSource ConnectionName="MJLTEST-CON" SourceType="SQLTable">
+          <Table Name="t_run_user_location"/>
+        </DataSource>
+      </ReportControl>
+      
+</AnetDatasource>
+</net.aditri.ui.config>

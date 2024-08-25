@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- <constant name="struts.action.extension" value="do"/> -->
+	<constant name="struts.action.excludePattern" value="/rest/session,/rest/session/ug,/rest/session/hasaccess"/>
+	<constant name="devMode" value="true" />
+	
+	<constant name="struts.custom.i18n.resources" 
+   		      value="
+   		       res.i18n.ui.user
+   		      ,res.i18n.ui.group
+   		      ,res.i18n.ui.menu
+   		      ,res.i18n.common.modal
+   		      ,res.i18n.common.uieliment" />
+   	
+	<package name="default" namespace="/" extends="struts-default"></package>
+	
+	<include file="res/struts/struts-auth.xml"/>
+	<include file="res/struts/struts-home.xml"/>
+	<include file="res/struts/struts-dashboard.xml"/>
+	<include file="res/struts/struts-setup.xml"/>
+	<include file="res/struts/struts-user.xml"/>
+	<include file="res/struts/struts-group.xml"/>
+	<include file="res/struts/struts-group-menu.xml"/>
+	<include file="res/struts/struts-group-user.xml"/>
+	<include file="res/struts/struts-menu.xml"/>
+	<include file="res/struts/struts-report.xml"/>
+	<include file="res/struts/struts-developer.xml"/>
+	<include file="res/struts/struts-job.xml"/>
+</struts>

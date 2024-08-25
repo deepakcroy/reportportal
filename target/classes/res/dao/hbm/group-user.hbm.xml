@@ -1,0 +1,10 @@
+<?xml version="1.0"?><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<sql-query name="SQL_GET_GROUPUSER_LIST">
+		 <![CDATA[
+		  SELECT  `groupuser_id`,`groupid`,`userid`,`status`,`createdby`,`createdat`,`modifiedby` 
+		  FROM `group_user` 
+		  WHERE GROUPID=:P_GROUPID
+		 ]]>
+	</sql-query>
+</hibernate-mapping>

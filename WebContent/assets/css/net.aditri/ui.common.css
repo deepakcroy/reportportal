@@ -1,0 +1,125 @@
+.ui-datepicker {
+	width: 200px;
+	height: auto;
+	margin: 5px auto 0;
+	font: 8pt Arial, sans-serif;
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+	-moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+}
+.ui-widget {font-size: 12px!Important;}
+
+
+
+
+
+
+
+
+.rc-codeblock {display:none;}
+.rc-hidden {display:none;}
+.rc-datarow { vertical-align:top;}
+.rc-datarow label { display:inline-block; font-weight:bold;}
+input, textarea, select {font-size:10px; color:#313030;}
+
+.rc-datepicker { width:100px;}
+.rc-datepicker-btn {background:url(../../../assets/img/rc-controls/calendar.png) no-repeat; background-position:center; width:16px; height:16px; display:inline-block; /*padding: 0px 0px 3px 4px;*/ margin-left:4px; /*margin-top:2px; position:absolute;*/ cursor:pointer;}
+.rc-monthpicker { width:100px; }
+.rc-monthpicker-btn {background:url(../../../assets/img/rc-controls/monthpicker.png) no-repeat; background-position:center; width:16px; height:16px; display:inline-block; /*padding: 0px 0px 3px 4px;*/ margin-left:4px; /*margin-top:2px; position:absolute;*/ cursor:pointer;}
+.rc-quarterpicker { display:inline-block;}
+.rc-combobox {  width:200px;}
+
+.rc-duallistbox {border:1px solid silver; border-radius:5px; color:#000; min-width:220px; max-width:220px; min-height:110px; vertical-align:top;}
+.rc-duallistbox-ctrl {display:block; width:40px!Important; font-size:16px; font-weight:bold; padding:0px!Important; margin-bottom:2px; text-align:center;}
+
+.rc-lookup-btn {
+    background:url(../../../assets/img/rc-controls/lookup.png) no-repeat; background-position:center; width:16px; height:16px; display:inline-block; /*border:1px solid silver; padding: 0px 0px 3px 4px;*/ margin-left:4px; /*margin-top:2px; position:absolute; border-radius:5px;*/cursor:pointer;
+}
+#dialogSearchResult {}
+.dialogSearchResultGrid{max-height:250px;overflow-y:auto; overflow-x:hidden; min-width:400px; min-height:200px;}
+#rc-dialog-data-table-dummy {font-size: 11px;overflow-x:hidden; display:none;width: 100%;background-color: #d4d4d4;}
+#rc-dialog-data-table-dummy  td{ border-top:1px solid silver; border-bottom:1px solid silver;font-weight:bold;padding-left:4px;}
+.rc-dialog-data-table {font-size:10px; margin-top:-18px;width: 100%;}
+.rc-dialog-data-table td {border-bottom:1px solid silver; padding-left:5px;}
+.rc-dialog-data-table tr:hover {font-weight:bold;}
+.rc-dialog-data-table thead td{/*display:none;*/ border:none;}
+#rc-dialog-search-checkbox {}
+.rc-dialog-data-table thead td { font-weight:bold; border-top:1px solid silver;}
+.rc-dialog-lodder { background-image:url("../../../assets/img/system/loading35.gif"); background-repeat:no-repeat; width: 43px;height: 11px;display: inline-block;margin-left: 20px; }
+.rc-dialog-search-label { padding-right:20px; font-size:11px;display: inline-block;}
+#rc-dialog-search-lookup {
+    background:url(../../../assets/img/rc-controls/lookup.png) no-repeat; background-position:center; width:18px; height:18px; display:inline-block; padding: 0px 0px 3px 4px; margin-left:4px; margin-top:2px; border-radius:5px;cursor:pointer; 
+}
+
+.paginator-wrapper{padding-top:5px;}
+.paginator-wrapper .pg-first,.pg-last,.pg-next,.pg-prev{cursor:pointer;}
+.paginator-wrapper .pg-reload{cursor:pointer;}
+.paginator-wrapper .page-number{width:40px!Important;}
+
+#ReportContorlsForm label {display:inline-block;width:150px;font-size:10px;vertical-align: top;}
+#rptScheduleSetup_dialog label{display:inline-block;width:150px;font-size:10px;vertical-align: top;}
+
+#ReportContorlsForm select { 
+    /*min-width:108px;*/
+}
+/* .frmContent { padding:20px 5px 4px 20px; background-color:#EDEFED; border-radius:5px;}
+#frmContentInner { border-bottom:1px solid silver;overflow-y:auto; overflow-x:hidden; padding-top:10px;}
+ */
+
+#menuExportAs { text-align:right!Important; font-weight:normal!Important; }
+#menuExportAs li { display:block!Important;border-bottom: 1px solid #ccc; height:20px; cursor:pointer; }
+#menuExportAs li:hover {background:silver;}
+#menuExportAs li a:hover{background:none;}
+#menuExportAs span{ width:20px; height:20px; float:left;}
+
+
+#menuEmailAs { text-align:right!Important; font-weight:normal!Important; }
+#menuEmailAs li { display:block!Important;border-bottom: 1px solid #ccc; height:20px; cursor:pointer; }
+#menuEmailAs li:hover {background:silver;}
+#menuEmailAs li a:hover{background:none;}
+#menuEmailAs span{ width:20px; height:20px; float:left;}
+
+.menu-ico-excel{background:url("../../../assets/img/system/excel.png") no-repeat;}
+.menu-ico-excelf{background:url("../../../assets/img/system/excelf.png") no-repeat;}
+.menu-ico-pdf{background:url("../../../assets/img/system/pdf.png") no-repeat;}
+.menu-ico-doc{background:url("../../../assets/img/system/word.png") no-repeat;}
+.menu-ico-mhtml{background:url("../../../assets/img/system/mhtml.png") no-repeat;}
+
+.rc-num-range-ctrl { width:59px;}
+
+.rc-checklist { /*display: table-cell; */vertical-align: top;min-width: 100px; }
+.rc-checklist-items {display: inline-block;margin-left: 55px;max-width: 500px; max-height:200px; overflow:auto;}
+.rc-checklist-items li {
+list-style:none; display: inline-block; width:150px;
+}
+.rc-checklist-items li > input[type='checkbox'] { margin-right:3px; }
+.rc-auto {width:auto!Important;}
+
+#rc-exportas-menu{margin:0 0 10px 5px;!Important;}
+
+.ellipsis {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.job-active {color:green;}
+.job-active:hover { background:none!Important;color:green;}
+.job-inactive {color:#C01F1F;}
+.job-inactive:hover { background:none!Important;color:#C01F1F;}
+.job-edit {display:none;}
+.job-link {color:blue; cursor:pointer;}
+.job-link:hover {background:none!Important;color:#C01F1F;}
+.rc-job-sch-result {width: 100%;}
+.rc-job-sch-result td { font-weight:bold;border: 1px solid #3B9E3C;padding: 2px;}
+#rc-sch-joblist {
+width: 340px!Important;
+position: absolute!Important;
+border: 1px solid #008000!Important;
+border-radius: 5px!Important;
+background-color:#A3CF9D!Important;
+padding: 10px 10px 10px 10px;
+margin-left: -10px; overflow-y:auto;
+}
+.rc-job-sch-btn { margin-right:2px!Important;}
+.rc-sch-dialog-left { width:68%; display:inline-block; float:left; min-height:400px; overflow:auto;background-color: #EDEFED;border-radius:5px;border: 1px solid #ccc;}
+.rc-sch-dialog-right { width:31%;display:inline-block; float:right; border:1px solid #ccc; min-height:400px;background-color: #EDEFED;border-radius:5px;border: 1px solid #ccc;}

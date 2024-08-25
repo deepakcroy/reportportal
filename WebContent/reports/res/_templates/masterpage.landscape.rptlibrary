@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
+    <property name="units">in</property>
+    <property name="theme">defaultTheme</property>
+    <themes>
+        <theme name="defaultTheme" id="4"/>
+    </themes>
+    <page-setup>
+        <simple-master-page name="NewSimpleMasterPage" id="3">
+            <property name="orientation">landscape</property>
+            <property name="headerHeight">1in</property>
+            <property name="footerHeight">0.75in</property>
+            <page-header>
+                <grid name="NewGrid1" id="26">
+                    <property name="height">0.8333333333333334in</property>
+                    <column id="27">
+                        <property name="width">1.5in</property>
+                    </column>
+                    <column id="28">
+                        <property name="width">7.5in</property>
+                    </column>
+                    <column id="29">
+                        <property name="width">1.5in</property>
+                    </column>
+                    <row id="30">
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <cell id="31">
+                            <property name="verticalAlign">bottom</property>
+                            <image name="NewImage" id="35">
+                                <property name="marginTop">10pt</property>
+                                <property name="marginLeft">5pt</property>
+                                <property name="marginBottom">5pt</property>
+                                <property name="height">50px</property>
+                                <property name="width">50px</property>
+                                <property name="source">embed</property>
+                                <property name="imageName">dpgc-logo.jpg</property>
+                            </image>
+                        </cell>
+                        <cell id="32">
+                            <text name="NewText" id="34">
+                                <property name="textAlign">center</property>
+                                <property name="contentType">html</property>
+                                <text-property name="content"><![CDATA[<div style="text-align:center">
+            <h3 style="margin-bottom: 0px; margin-top: 10px;">Dhaka Power Distribution Company Ltd.</h3>
+            <div style="font-family:Arial;">(An Enterprise of the Government of the People's Republic of Bangladesh)</div>
+            <div style="font-family:Arial;">Biddut Bhabon (2<sup>nd</sup> Floor), 1 Abdul Gani Road, Dhaka -1000</div>
+</div>]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="33"/>
+                    </row>
+                </grid>
+            </page-header>
+            <page-footer>
+                <grid name="NewGrid" id="9">
+                    <column id="10">
+                        <property name="width">7in</property>
+                    </column>
+                    <column id="11">
+                        <property name="width">3.5in</property>
+                    </column>
+                    <row id="24">
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">medium</property>
+                        <cell id="25">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <property name="borderTopStyle">solid</property>
+                            <property name="borderTopWidth">medium</property>
+                        </cell>
+                    </row>
+                    <row id="12">
+                        <cell id="13">
+                            <text-data name="NewTextData2" id="23">
+                                <expression name="valueExpr">this.text="&lt;b>Execution Time:&lt;/b> "+new Date()</expression>
+                                <property name="contentType">html</property>
+                            </text-data>
+                        </cell>
+                        <cell id="14">
+                            <text-data name="NewTextData" id="20">
+                                <property name="paddingRight">10pt</property>
+                                <property name="textAlign">right</property>
+                                <expression name="valueExpr">"&lt;b>Printed By:&lt;/b>"</expression>
+                                <property name="contentType">html</property>
+                            </text-data>
+                        </cell>
+                    </row>
+                    <row id="15">
+                        <cell id="16">
+                            <text name="NewText1" id="21">
+                                <property name="contentType">html</property>
+                                <text-property name="content"><![CDATA[&amp;copy; Dhaka Power Distribution Company Limited (DPDC). All rights reserved. <a href='https://www.dpdc.org.bd' target='_blank'>www.dpdc.org.bd</a>]]></text-property>
+                            </text>
+                        </cell>
+                        <cell id="17">
+                            <text-data name="NewTextData1" id="22">
+                                <property name="paddingRight">10pt</property>
+                                <property name="textAlign">right</property>
+                                <method name="onRender"><![CDATA[this.text="Page " + pageNumber + " of " + totalPage]]></method>
+                                <expression name="valueExpr">this.text="Page " + pageNumber + " of " + totalPage</expression>
+                                <property name="contentType">html</property>
+                            </text-data>
+                        </cell>
+                    </row>
+                </grid>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <list-property name="images">
+        <structure>
+            <property name="name">dpgc-logo.jpg</property>
+            <property name="data">
+                /9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMraHR0cDovL25z
+                LmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJl
+                U3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJB
+                ZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAg
+                ICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3lu
+                dGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25z
+                LmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEu
+                MC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3Vy
+                Y2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKFdpbmRvd3MpIiB4bXBN
+                TTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg2NzY5NTFCN0VEMjExRTU5MkU4RDM2NTNCNTQ2QTVCIiB4bXBN
+                TTpEb2N1bWVudElEPSJ4bXAuZGlkOjg2NzY5NTFDN0VEMjExRTU5MkU4RDM2NTNCNTQ2QTVCIj4gPHht
+                cE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ODY3Njk1MTk3RUQyMTFFNTky
+                RThEMzY1M0I1NDZBNUIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ODY3Njk1MUE3RUQyMTFFNTky
+                RThEMzY1M0I1NDZBNUIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+
+                IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAOQWRvYmUAZMAAAAAB/9sAhAAGBAQEBQQGBQUGCQYFBgkLCAYG
+                CAsMCgoLCgoMEAwMDAwMDBAMDg8QDw4MExMUFBMTHBsbGxwfHx8fHx8fHx8fAQcHBw0MDRgQEBgaFREV
+                Gh8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx//wAARCABkAGQD
+                AREAAhEBAxEB/8QAqwAAAgMBAQEBAAAAAAAAAAAABQYABAcDCAIBAQEAAwEBAAAAAAAAAAAAAAAAAQME
+                AgUQAAEDAwIDBQMHBgcQAwAAAAIBAwQRBQYAEiETBzFBIhQVUTIjYXFCYhYXCIFSM9MklNFyktJDNFWR
+                ocFjc4OTo7NEVIQlNZZYhVYnEQACAgEDAgQFBAMBAAAAAAAAARECAyExBPASQVFhcZGhsSIUgdHxE8Hh
+                MgX/2gAMAwEAAhEDEQA/APVOgJoD8MwACMyQQFFIiJaIiJxVVVdALDmYyLghpjEJJ7AIu+8ST8vbh2+8
+                oO0I36e1oFD66aAqToxt8k8py0mBlI4bEWCoW6OotNq45tcq5JLaCKSrzk4caJruuO1tlscu6W7F6PM6
+                UuXA4c63+ZJRAo8uUb1wB9ScJvli68TlCqNdhU3d1aLrQ+HeJKVyazB8Mz+lEh14wxeNFjxnyjCXkEbk
+                SHeU24gxm2AUnF+LRRWi9+pfDsvf6e5C5NWF4zfTo2Zz1mv0i2DaxE5hxZr4tsgSVFeQ+rjCj3JRtUrw
+                7eGqXx8iiVvsWLNRy52CVvn5WMFq4W2VFyu0PJvaNEGHMUa08Jj+zOEipTaotce1dV3o6uHuWVsrKUGL
+                Jk9qu5ux2VOPcI6Isq2ygVmU0i8EUmy7RXuMagvcq65JC2gJoCaAmgKd3u9vtFvdn3B3kxmqIq0UiIiV
+                BAAAUUjMyVBERSqrwTQCvLiHcYjl8zYht9iior7ViM0VoQHijlwUao8538pKtj9cqFrqlHZwtyLWSUsB
+                X683jJowTMWGWrdukuQ3LWy401zQdAShzTA6CcYu8D4K0RLTcNNehix1xuLxqpn6r3/yZL3tfWvh0n7H
+                KbgdutovXHMMkaix3RQeYZgBGQiTX6R+vFYpq0oANFrXt1zbmpKKrr+dQuK/F9fwfKPdMpbpyIWP3bIV
+                ManJahyzacIgRvfue5LJHROBd3FUVNUfl5Nk4Lfx6eR1JcVNompfTu9RmVEREwjAaojaCgqPlpBuCW0E
+                TcnFeyuoXKyeZP49PI+WnumEuO9a7bcix25ySjux49xacjEDkWQUhpBjzBaFwVePcQCvi10uXaU7a7/N
+                QR+PWNNP9anS52rqVj02XcrfOCcw+SUqBG3tQhLc5FHYDW5VLebP0dxLUlFNaKXw5Ek1HXn+5TauSjbT
+                nryL1nyPGM9iRxnNlb7xHQDiT2T5ag8akP7HJ4KXiaJFbJPFtVFEh1RyOI8b811uW4eQrryYftd7ucCe
+                1ZMkUFkvko2u7Njy2Jm1N2whqqNSUFFVQ7CTxB9IRyGgZNATQH4ZgAEZkggKKpEq0RETiqqq6AQH8gt7
+                jkbML0Dp29XeRiVrbbVx11TFazEa4VddbEibr7jPHgRkmrcWF3cI4yZFVSwI6xkfUK/gLxO2uyQDR8Wt
+                iuRpcV1CRolUwEDN1uikPiHlnSomiou9OmCumtn8U+vmZItlt5JBGHdG1Qsd6flHt9riETM3J5Z+YbE2
+                yUTZiC4alKdAqopGXLb7PEqbdefkyWu5ZrpRVUIO2XE8Ktkr1F19u6Xpab7xcngkylVPzDPwtD9VoRH5
+                NVnYyeqWz/i2f9IH8OgItztqdstnj2fEH+HQFa4FjdyilEuKw5kU/fYkcp1tfnE6ougE+RjrtgaN3DLq
+                0UHaqPYrPk74bg8ajFfJTdhktVptq3X6CdupTgMAzLFid+ti3zHyHH5+PLW62claY5DrIbgV1B3g26gi
+                itSPEO2heJNbuPy7N9tvu7uvh6GTLx6r7lpAaxm9xb9iJwMr5qxec3EiXmUKxEmuKdGHYqlsd5nMGrZi
+                NeAnXcqonPJwRb7feFrB1hy/b93x8xmxi6TkekWC8HzLvbREklUQUmRTqjUoUSiIS7VF0U900X6JDXEa
+                Rg0As5duusqDioL8K5b37sqdvpzCjzW/+YcMGl+op04poBTybLWMkusXGrMzAvVpkKDF2tMoHAdVtxVq
+                6Krt5YMi2XHapIVOHYuvSw4P66u9pq/BrrxMV83fZVrDXiDeqmXXG1MwcIxy03fIGGAbHJHLYpnKZiKC
+                qzHKQiLsck7aEXvI3VU4kK68+1u5tmyqhQJqXfHkERT8P89BFEEU8m3RET/Nagknq+Pf+v8AP/c2/wBX
+                oCq9lWGsT41ve6ES250wXDiRiitI46LKIrigPLquzclfn0ADx/IMagplEyf0clTojNyffMijhtgMgw0p
+                RzqCoHL2qap2eLQDDGyDFpMdqTH6BzXY74C4y6ERtRIDTcJCqN8UVFroDr6vj3/r/P8A3Nv9XoDmWU3W
+                2TIt0xDpDesfusYxF3y7CDHmRiJEdjS2xBN47OLZe8BIlOG5FA0nJpa3GHA6iY48LwGwkdEmN7yhVcVD
+                cZac4MvodWXvCS921VSi7eLdWX9b9/f0Zlz1afcv4CK3Ibhidsy62i96lY1ddfjOkrj5sCW24xCJURTX
+                aNQ4e+AV9ms/Ixut2i7FaaoefPw/I+f5w+S5XP8AMV8HK2799fZt46pLBPbvKQn8mytxhZQhIC2RW0dZ
+                Z+BBRRJEN82wqst176XHh26sxY++0dfI4yX7VIuYQjdti5F1Au3OEY8Zw0ZfdN4gFsFfkUddFvchrtEa
+                eDh4V1t5uSEqIzcamrsy5gGddO7TjoHccstBXu6OHcr0551jjLk0IwTx+60O1oPqimvONgTyHq3hLdkm
+                uWbLbEl0baI4nmZTbjSmKVoQNuCa17OC6Ay3DetXXbM5d0j41Z8euI2kmhkSBedBskfFSBQUnePAVr7F
+                4akHO/Xn8Q5dRsTdm2CyN3tuPdEtMYJBq04BAx5lXC5iqiiiBt4+3QAcbt11TGOpIJZLN5B6VcVyJzzB
+                b2HCgto+jCczxILO1Rr36AccWvn4mgxm0Bb8bsLsAYUZIjrkk0MmUZHlkSc1OKjSuoBU6bfiDyK/3lW8
+                oueNY/BiuODLjuOODJNGiVtUbNx5AFd/FKovDUg1n71+mP8A9stH77H/AJ+oAt4xf8Ql51e8fs93hXS0
+                ZLFO5+XhyG3VZljtYmjRsiUUfE23U+tvXU1bTlENSoK/S3dFym42d4JCLCZMAaJhFjBse5RK1JcLnFu2
+                IlEbBslRVEeFV9Lma0VtNfj8NvqzHx3FmvIvbV+zP2Jqv/d/QttePp39d2fN6d8LXmG0tWWx2e89P7K5
+                dHnI6OPeqsymTVpQkyXHHkOq7hpV9ab0VPy6sx53jc+eg/HeXRbrUFdQ7GGOdN27DBmtKtzusdtZV3IR
+                jVflJJcF/lI0ItEgKKiCJwXU5sryWllePGqKEBVumVqtVuHTb+U9/P1WWFS7XPKFtU1Cn9OVFWHUJGie
+                5lNi12eP3vZoAV+E4nSv2dK6UY3FW21KFXy/6Fz3K/3/AJdGCZj1sx+bm8DJsceausTF2Ho4qgvNobtz
+                2NuCaGIL4OSm3b7V0gAgepEryGV2VIjajl0+U1OdqVWXpcUWj5PcoCAVFS7+3SCDXejHUjGMisUXH4U0
+                Hb3Y4oMT4Yg6KthHLkCSkYoBKu1K7VXjqCTA+jsq7s3S6eSk4synMmJTIFNDp5xfzSHj7Pk1INV9Uyr+
+                0Om38p7+foCt6pfWcnxadMnYgbMe6tMk3jpOedMZrZxdu0iJCb3OiR8O6vdoDRbj0+sDuUeuyLhNZnSX
+                RJlhh/lJvFsWyRCBEeICEE3Ap7E7aJrQuY60VIRUuH32d1OgO5Dn32+W/oPTPV6V4c7+obqfncvh7Kaz
+                FpZtNiG/dIbTaybAnVtkZtoHiMW+cy0Iop8tUVR3DxTii96LqrNj76tG/wD8zmPjZ65JaS3iJjxifEFd
+                TbFPumKYpbZjzUeUt3hMyHljtPNCZNutIvlXlcZMd5JRCr7e3XWOe1TuUct0eWzp/wAt6eP7A37gZn9u
+                2/8A8bs/6rXZnKd56Ey49nnSCvlvJGY7riimOWgVVBBVohI2ip86akC/+E+J5O/51G3i5y1tvjBoGBXc
+                y4XBtvwj293bowYHibbjVqyRHQJtVlx1RDRRWiur7aalAcwVPVf/AJpf9joQNH4RWnR6lZoZAQgbJbCU
+                VRF/al7F7NQyQf0V6eu5RdrqrdwjRFQ5jlH7VBnrQZijTdJE17/8GgNd+4GZ/btv/wDG7P8AqtQAbeOl
+                EjG5uP3IrpFmGl7twNxo9mt8Bw1KQlaSIwC6KCG4lovFEougNOmY7KnZvEu8gGigW1ghil4wfR9xUqqE
+                BUMKdomlK+3uz2xN5FZ7I9fFzq4+HbFVvvyW12de1e60fqvkB+Y39+23cm77M0p8vn60+enHWg8gt2BZ
+                sfD7rboL3lZ9plTYrDnJV/lojxPR/gjxL4DrdET267xx3Kdjm8w43FV9y83PBsjjuPlPvFnfau8QzLcq
+                vw3BkKwACpEGxyOTaASIvHs1o5dEoaUIo49m5Tcmp2y4RblbotxiHzIk1luRHP8AObdFDFf7i6yGkyvr
+                z1QvGNRH8es8BHptxtcmV6gbrYjHBskbL4RiSOr4uyqakGKfh5uWTz4mY5EGYR8RjxvJFdJbsBiS04iA
+                4DXF0g2KKDRBH3lX26AfonSrqL1BnPXm75GUW0G0DcGTNtEZmXKQCUkcWGh0Za41DmLzF7VEUppIL7/4
+                Z8iRtxyPmoHKRVdaR20x0FXqUQjIXNyV7FJONNJB+YRb+pUN1nDpec/Zu+RQJWbU/Z4jzMkEVSN2DKUw
+                8w3Uq0ojgdhCmgMP6WdUctxDLrp5QW58G2pNeuEXa0wUhoHCcc+ISGoePxIgp8nZoD29YLqN3sVuuwtq
+                yNwisykZVdygj7YubVVO2m6moAp5tcYhZfYIkhzbDsrcnIbmtV8IMNrGjJT6Sm6+SinauzXVKuzSW7It
+                ZJSyrhd7yW85K5JG4NjaT3yXbU8Px2476L5VRWi1VaJuUS2jRR4lWm3kY6UpEfd5/UyYb2taZ08vofFf
+                /wBA+0Vfgeqehb+7leR3V/fPBX8msBsGEf8ApWdOAq7YmSMIba9yT4Q7TT+M7G2qnyNLoABCx2Bh+QuZ
+                BNuQW2FNfWJyniWQ7K5y/CA3FQdlHauJRFXiu4tuvQtleWnYlLSn2Mlcax27m4k7Y1c7fhdzl4heJTUG
+                2ITk3F5UkxaaOG6e52IJmqDviOnRBrXlEFOxdeeaxF652a2ZMR360ZXZmlgWiXFdhvOg8bqH8X4StujQ
+                12bUqi6kGZfhDgYasm93DJXozb0ByK5bG50gW2RdIXavCy4SATgpTadFUa8KV0YPVKZ7gypVMitlOH++
+                x+/s+n36gETPcGVURMitiqtEREmR+Nez6egBeQ3PpZk9vWBc7za5LQkLrLgTWBeYdTiDzDoGhtOCvukK
+                ougPGHTHFTv+bZLbQvkK1NnGmNrcLqW8XQceRpdpobSE6qFur8i8NSD2hZsrwjHsUgw5WSW027RBZYef
+                GS0u5I7QgpCCERcdvAUquoAlS7lfAYnTJcEmb5moIcdmQlFiwWF2R43EhEHWmTV9zcSUdc2jVdbeJiT+
+                9vYzcjI19q8RlxRr7NYpKyO4RnmC8o0jFudBoX0baReS2qtohE88RiJIXHdThWqrzy8ibhawdYKQpCX2
+                Snfd96RzE9c2ee8xXw+qc7zvMr+b5vj/ABeGsheGMnsh3e1Eyw4ke4RzCVbZSpVGZTK7mjVE4qK+6afS
+                BSHv0ADntpmuNNCTINmy8rV2tUkeYjb7XB1pzam8tnaCAQ8xFFd2wuN+DL2OSrNTuUCT5TEM8wxvBcoA
+                2geM2rDcXnUceV9oVICbJRDY60J7FDs7Qqqoqa0crjuXZfr6FODMoSf6HmS7/hx6mQcukYyxDalyhFXo
+                D3OaYCYwnacfnEG8gT9ICeIfm46wyazsn4X+tyKirjqKid3monH/AFupkG4P4HmrU05SY1Iuz6OXJ6BI
+                VYkNyKxLjizGt4HzFIUBxFPmAlA+j7y6gFMun2fSbQrk/D0J55ZxXLFWEhhDluyngKO4svm+DkgG4j9/
+                cnD3l0AodSuhXVnIZDLlvtz81lHpDzEV5u3wwgx3iRWYjZi7vc5aJTh4B+j2roBCn/ht6wW+G9OuFnah
+                wo4q4/JfmwwbAU7VIld1Mg0XoV0Xh2GZEzDPYjpSABJVkx8GlddWhILcl9vuqZIjLfvKXGnDVmPC77bF
+                d8qrubVZsGeud+j3V+5FcbTJjyEjTmNpIQOluRHVUl2Pov6QqGJ027RpTW3Jye2rrEWladeH0MlMHdaZ
+                ldfMaeU1e8gYtsZKWHGXAOTT3HrgAorDA+0YqKjh/wCM2J2gSa81uXJuSgbdQSTQC3fLZcYFzXI7G0r8
+                lRFu7WwVQfOMBXaTarQUktIvgVVoQ+AvokAC7kWNWvKoz+S2VxZjrsY2CjluqhMKRcoWy2Gy9zfCaKok
+                NSVKHRU28bk9sVe09df4MufB3fctwbenrkmFwLdlUGNc5MhzzRNvcwHbfECnLcMmiJ9XQJUDmNkhIq/S
+                oVe3hx5Lvt2+r9DlZb0qp3+iPq1ZXe7eYRrPe4+RRxFvfb7wRR5TJuDUIyXIQVpx1e4Xm0NU7SXWe/Gv
+                XWNOtS6uer8Rm+8KXGqF1xa8xHBVEJY7Dc9vinBUKGbxUX5QTWcuPz7z7YSoLVlvrrirQW0tUoVVfnMA
+                FPyroCFk2eXFFSz4yltaWtJ18kA0Ionf5aMr7pcO4iDQCxLlY3FuLU7Ibi7mmQRnBWJFYb22+M8u7ZyG
+                Q3so5UFRCcI3NyUqi61Y+Je2r0XqUX5FV6s7ScRzHIbgsvIY7Tbz6OsNMIXMjx4ZKjbjK7VRSJ1F3KX0
+                wVR8BCOtCz46KKf7b66ZT/Xks5sMs2WvPdxnExbjzqCt0uDQorMACFE3Ki1EpJj+jbX+Ofhohefaztub
+                K1S2GK0WqDabaxboIKEaONAQlUiVVVSIzMqkRmSqREvFVVVXjrkkt6AmgJoBfumMPJOO8WCQNtvDlFlI
+                Q74sxBSgjKaRR8VOAujQx+sPh0AGu83HrxHOy5nDOxzZXLbV03FFh5WyUgSPOFBA0qq0bPafHiGrcWa1
+                HKK8mKt1DAecdPZrbMedaoXrTgIbbkerTYi0X6NSRUVx8GxEBRvf9GqcSXW7j8pOVZ9vXy9zLmwNapSV
+                zwjLbWrYWtXmI8hiS5JdYNDko6KKoNbzTcjfhDlJuWnu+GiV6XIpb/r09uvM5eGy29S5CY6rLa7Y4k0m
+                YatqL7MkVK4FKIyFsTcVtUCOXhUiIFMUXvprizwdz01+Ufv8juqywtf3CjuOZhMxuLFuDgTLlDmGciO4
+                +Qx5LZoqAvN5alRnehiihxIeOq1lxq7a0TXw/k7/AK7uqndP4nW1Y3iWAspIfuZMCTxrH5xoJGJigqwD
+                IJ8RSLxrsHcR8V1Vn5Vsm6O8WBU2L5SMnyLwRW3cfspcDlvCg3F8OyjLJIvlkX89z4n1BXxazF4etNot
+                1pghBtzAx4zdVQEqqqRLUjMiVSMyXiREqqq8VXQFvQE0BNATQE0BwneR8m95/leS2r5jn7eVs79+/wAN
+                Pn0Bnw/Zjj9ivV+1dvoX/b6/U85/06n+T0B1Y++3mfs3pnI409X/AE1OFN3kPBu+bhT5dAdnPv25Zbfs
+                zupwp5+v5K8K/PoCqv3gcftF6ryK+L0LyPKpw7a/tnz7PyaAM4l933nnPSNnrdP2jzvO9U20/pPOftW3
+                5/DoBu0BNATQE0B//9k=
+</property>
+        </structure>
+    </list-property>
+</library>

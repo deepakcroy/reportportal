@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<org.code.traffic.ui.config>
+<DBConfigs>
+	<DBConfig Name="PRP-CON" DBServer="ORACLE" ConString="jdbc:oracle:thin:@localhost:1521:orcl" Driver="oracle.jdbc.driver.OracleDriver" User="PREPAIDREPORTINGDB" PWD="821216" PWDEncrypt="false" ></DBConfig>
+	<DBConfig Name="MJLTEST-CON" DBServer="ORACLE" ConString="jdbc:oracle:thin:@192.168.210.98:1521:orcl" Driver="oracle.jdbc.driver.OracleDriver" User="mjl_yth" PWD="Yldwc1gzbDBhQT09WVMxa2FTMTBjaTFwTFc1bGRBPT0=" PWDEncrypt="true" ></DBConfig>
+	<DBConfig Name="MIS-CON" DBServer="ORACLE" ConString="jdbc:oracle:thin:@192.168.0.223:1521:dpdcdb" Driver="oracle.jdbc.driver.OracleDriver" User="mis" PWD="WkhCa1l6VnRhWE0wTURBPVlTMWthUzEwY2kxcExXNWxkQT09" PWDEncrypt="true" ></DBConfig>
+</DBConfigs>
+<Forms>
+  <Form Action="/" ReportId="pos/pos-agent" ReportName="AP-1-1-1-TMS Freight Accural By Dim" Description="TMS Freight Accruals by Dim Report based on Date, GL Account, Cost Center, Department, SBU, Salesgroup and Brand. test" ProcedureName="RC_AP_1_1_1_TMS_Freight_Accruals_by_DimRpt" RDLName="AP_1_1_1_TMS_Freight_Accruals_by_Dim">
+    <ReportBody><![CDATA[
+    <div class="rc-datarow">
+    <label for="chkFreightAccural">Freight Accrual</label>
+    <input type="checkbox" name="chkFreightAccural" id="chkFreightAccural" class='rc-checkbox' data-param="freight_accrual" />
+    </div>
+
+    <div class="rc-datarow">
+    <label for="dpDateFrom">Date From</label>
+    <input type="text" name="dpDateFrom" id="dpDateFrom" class='rc-datepicker' data-param="date_from" />
+    </div>
+
+    <div class="rc-datarow">
+    <label for="dpDateTo">Date To</label>
+    <input type="text" name="dpDateTo" id="dpDateTo" class='rc-datepicker' data-param="date_to" />
+    </div>
+
+    <div class="rc-datarow">
+    <label for="lstGLAcc">GL Account</label>
+    <select id="lstGLAcc" name="lstGLAcc" class="rc-combobox" data-param="gl_account">
+    <option value="21031" title="21031 (Accounts Payable - Freight Accruals)" selected="selected">21031 (Accounts Payable - Freight Accruals)</option>
+    </select>
+    </div>
+
+    <div class="rc-datarow">
+    <label for="lstOrderType">Order Type</label>
+    <select id="lstOrderType" name="lstOrderType" class="rc-combobox" data-param="order_type" data-event="name:showhide,params:[sales order:{show=(lstCostCenter lstSBU):hide=(lstWhoTo)}, Transfer Order:{show =(lstWhoTo): hide=(lstCostCenter lstSBU)}, All:{show=():hide=(lstCostCenter lstSBU lstWhoTo)}]">
+    <option value="0">Sales Order</option>
+    <option value="21">Transfer Order</option>
+    <option value="">All</option>
+    </select>
+    </div>
+    
+    <div class="rc-datarow">
+    <label for="lstCostCenter">Cost Center</label>
+    <select id="lstCostCenter" name="lstCostCenter" class='rc-duallistbox' multiple='multiple' data-param="cost_center"></select>
+    </div>
+    
+    <div class="rc-datarow">
+    <label for="lstSBU">SBU</label>
+    <select id="lstSBU" name="lstSBU" class='rc-duallistbox' multiple='multiple' data-param="sbu"></select>
+    </div>
+    
+    <div class="rc-datarow rc-hidden">
+    <label for="lstWhoTo">Who To</label>
+    <select id="lstWhoTo" name="lstWhoTo" class='rc-combobox rc-reportparam' report-param="wh_to"></select>
+    </div>
+    
+	  ]]></ReportBody>
+    <ReportControls>
+      <ReportControl AllowDefaultFilter="false" Id="lstCostCenter" ControlType="DualListBox" NameField="USER_NAME" ValueField="USER_ID">
+        <DataSource ConnectionName="PRP-CON" SourceType="SQLTable">
+          <Table Name="USER_TABLE"></Table>
+        </DataSource>
+      </ReportControl>
+      <ReportControl AllowDefaultFilter="false" Id="lstSBU" ControlType="DualListBox" NameField="USER_NAME" ValueField="USER_ID">
+        <DataSource ConnectionName="PRP-CON" SourceType="SQLTable">
+          <Table Name="USER_TABLE"></Table>
+        </DataSource>
+      </ReportControl>
+      <ReportControl AllowDefaultFilter="false" Id="lstWhoTo" ControlType="ComboBox" NameField="USER_NAME" ValueField="USER_ID">
+        <DataSource ConnectionName="PRP-CON" SourceType="SQLTable">
+          <Table Name="USER_TABLE">
+          </Table>
+        </DataSource>
+      </ReportControl>
+    </ReportControls>
+  </Form>
+  <Form Action="/" ReportId="sales/sales-stat" ReportName="AR-2-1-6-Invoiced Sales" Description="Invoiced Sales Report Based on Date Range, Customer Account, Label" ProcedureName="RC_AR_2_1_6_InvoicedSalesRpt" RDLName="AR_2_1_6_Invoiced_Sales">
+    <ReportBody><![CDATA[
+      
+    <div class="rc-datarow">
+    <label for="dpReqReceiptDateFrom">Req Receipt Date From</label>
+    <input type="text" name="dpReqReceiptDateFrom" id="dpReqReceiptDateFrom" class='rc-datepicker' data-param="invoice_date_from" />
+    </div>
+    
+    <div class="rc-datarow">
+    <label for="dpReqReceiptDateTo">Req Receipt Date To</label>
+    <input type="text" name="dpReqReceiptDateTo" id="dpReqReceiptDateTo" class='rc-datepicker' data-param="invoice_date_to" />
+    </div>
+    
+    <div class="rc-datarow">
+    <label for="txtInvoiceAccount">Invoice Account</label>
+    <input type="text" id="txtInvoiceAccount" name="txtInvoiceAccount" class="rc-lookup" data-param="invoice_account" />
+    </div>
+    
+    <div class="rc-datarow">
+    <label for="txtCustomerAccount">Customer Account</label>
+    <input type="text" id="txtCustomerAccount" name="txtCustomerAccount" class="rc-lookup" data-param="customer_account" />
+    </div>
+    
+    <div class="rc-datarow">
+    <label for="txtLabel">Label</label>
+    <input type="text" id="txtLabel" name="txtLabel" class="rc-lookup" data-param="label" />
+    </div>  
+    
+	  ]]></ReportBody>
+    
+  </Form>
+  <Form Action="/" ReportId="masterdata/new-customer-data" ReportName="New Customer Data" Description="Azimpur and Lalbag's New Customer Data can be retrived from here" ProcedureName="_" RDLName="customers/new_customer_data">
+    <ReportBody><![CDATA[
+      
+    <div class="rc-datarow">
+    <label for="txtCustomerNo">Customer No</label>
+    <input style='width:450px;' type="text" id="txtCustomerNo" name="cno" class="rc-lookup rc-reportparam" report-param='cno' data-param="customer_no" />
+    </div>
+    
+    <div class="rc-datarow">
+    <label for="lstLocation">Location</label>
+    <select id="lstLocation" name="loc" class='rc-duallistbox rc-reportparam' multiple='multiple' report-param='loc' data-param="location"></select>
+    </div>
+	  ]]></ReportBody>
+    <ReportControls>
+      <ReportControl AllowDefaultFilter="false" Id="txtCustomerNo" ControlType="Lookup" FieldSelection="Multiple" NameField="CUSTOMER_NAME" ValueField="CUSTOMER_NO">
+        <DataSource ConnectionName="MJLTEST-CON" SourceType="SQLTable">
+          <Table Name="t_run_customer">
+          </Table>
+        </DataSource>
+      </ReportControl>
+      <ReportControl AllowDefaultFilter="false" Id="lstLocation" ControlType="DualListBox" NameField="REMARK" ValueField="LOCATION_NAME">
+        <DataSource ConnectionName="MJLTEST-CON" SourceType="SQLTable">
+          <Table Name="t_run_user_location"></Table>
+        </DataSource>
+      </ReportControl>
+    </ReportControls>
+  </Form>
+</Forms>
+</org.code.traffic.ui.config>

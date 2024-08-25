@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- FOR ORACLE -->
+	<!-- <sql-query name="SQL_GET_USER_BY_ROWNUM_RANGE">
+		<![CDATA[
+			SELECT USER_ID,USER_NAME,'********' PASSWORD,STATUS,CREATEDBY,CREATEDAT,MODIFIEDBY,MODIFIEDAT
+           ,ROW_NUM 
+           FROM 
+            (
+                    SELECT USER_ID,USER_NAME,PASSWORD,STATUS
+                                ,CREATEDBY,CREATEDAT,MODIFIEDBY,MODIFIEDAT
+                                , ROW_NUMBER() OVER (ORDER BY USER_ID DESC) ROW_NUM 
+                    FROM USER
+             )
+             WHERE ROW_NUM BETWEEN :P_FROM and :P_TO
+		]]>
+		<return class="com.prp.models.User" />
+	</sql-query> -->
+	<sql-query name="SQL_GET_USER_BY_ROWNUM_RANGE">
+		<![CDATA[
+			SELECT USER_ID,USER_NAME,'********' PASSWORD,STATUS,CREATEDBY,CREATEDAT,MODIFIEDBY,MODIFIEDAT
+			FROM USER LIMIT :P_FROM,:P_TO
+		]]>
+		<return class="com.prp.models.User" />
+	</sql-query>
+	<sql-query name="SQL_GET_TOTAL_USER">
+		<![CDATA[
+			SELECT COUNT(*) TOTAL_RECORD FROM USER
+		]]>
+		<return-scalar column="TOTAL_RECORD" type="int" />
+	</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions 
+PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"  "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">  
+<tiles-definitions>  
+    <definition name="private.layout"  template="/views/_templates/layout.jsp">  
+        <put-attribute name="title" value="" />  
+        <put-attribute name="header" value="/views/_templates/header.jsp" />  
+        <put-attribute name="sidebar" value="/views/_templates/sidebar.jsp" />  
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="/views/_templates/footer.jsp" />  
+    </definition>  
+  
+  	
+    
+  
+  
+  
+    <definition name="view.home" extends="private.layout">  
+        <put-attribute name="title" value="Welcome to Dashboard" />  
+        <put-attribute name="body" value="/views/home/home.jsp" />  
+    </definition>
+    
+    <definition name="view.myhome" extends="private.layout">  
+        <put-attribute name="title" value="Welcome to Dashboard" />  
+        <put-attribute name="body" value="/views/home/myhome.jsp" />  
+    </definition>
+   
+   
+
+	<definition name="view.setup" extends="private.layout">  
+        <put-attribute name="title" value="Setup" />  
+        <put-attribute name="body" value="/views/setup/index.jsp" />  
+    </definition>
+   
+  	<!-- <definition name="view.user" extends="private.layout">  
+        <put-attribute name="title" value="User Setup" />  
+        <put-attribute name="body" value="/views/user/index.jsp" />  
+    </definition> -->
+    
+    <!-- <definition name="view.group" extends="private.layout">  
+        <put-attribute name="title" value="UserGroup Setup" />  
+        <put-attribute name="body" value="/views/group/index.jsp" />  
+    </definition> -->
+    
+    <!-- <definition name="view.menu" extends="private.layout">  
+        <put-attribute name="title" value="Menu Setup" />  
+        <put-attribute name="body" value="/views/menu/index.jsp" />  
+    </definition> -->
+    
+    <!-- <definition name="view.groupmenu" extends="private.layout">  
+        <put-attribute name="title" value="Group Menu Setup" />  
+        <put-attribute name="body" value="/views/groupmenu/index.jsp" />  
+    </definition> -->
+    
+    <!-- <definition name="view.groupuser" extends="private.layout">  
+        <put-attribute name="title" value="Group User Setup" />  
+        <put-attribute name="body" value="/views/groupuser/index.jsp" />  
+    </definition> -->
+    
+    
+    <definition name="view.report" extends="private.layout">  
+        <put-attribute name="title" value="Reports" />  
+        <put-attribute name="body" value="/views/report/index.jsp" />  
+    </definition>
+    
+    <definition name="view.dashboard" extends="private.layout">  
+        <put-attribute name="title" value="Dashboards" />  
+        <put-attribute name="body" value="/views/dashboard/index.jsp" />  
+    </definition>
+    
+    <definition name="view.developer" extends="private.layout">  
+        <put-attribute name="title" value="Developer" />  
+        <put-attribute name="body" value="/views/developer/index.jsp" />  
+    </definition>
+    <definition name="view.job" extends="private.layout">  
+        <put-attribute name="title" value="Job" />  
+        <put-attribute name="body" value="/views/job/index.jsp" />  
+    </definition>
+    
+</tiles-definitions>  

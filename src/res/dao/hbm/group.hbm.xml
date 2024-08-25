@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<!-- FOR ORACLE PAGINATION  -->
+	<!-- <sql-query name="SQL_GET_GROUP_BY_ROWNUM_RANGE">
+		<![CDATA[
+		  SELECT GROUP_ID,GROUPNAME,DESCRIPTION,STATUS,CREATEDBY,CREATEDAT,MODIFIEDBY,MODIFIEDAT
+           ,ROW_NUM 
+           FROM 
+            (
+                    SELECT GROUP_ID,GROUPNAME,DESCRIPTION,STATUS
+                                ,CREATEDBY,CREATEDAT,MODIFIEDBY,MODIFIEDAT
+                                , ROW_NUMBER() OVER (ORDER BY GROUP_ID DESC) ROW_NUM 
+                    FROM GROUP
+             )
+             WHERE ROW_NUM BETWEEN :P_FROM and :P_TO
+		]]>
+		<return class="com.prp.models.Group" />
+	</sql-query> -->
+	<!-- FOR MySQL PAGINATION  -->
+	
+	<sql-query name="SQL_GET_GROUP_BY_ROWNUM_RANGE">
+		<![CDATA[
+		  SELECT GROUP_ID,GROUPNAME,DESCRIPTION,STATUS,CREATEDBY,CREATEDAT,MODIFIEDBY,MODIFIEDAT
+          FROM `GROUP` LIMIT :P_FROM,:P_TO
+		]]>
+		<return class="com.prp.models.Group" />
+	</sql-query>
+	
+	<sql-query name="SQL_GET_TOTAL_GROUP">
+		<![CDATA[
+			SELECT COUNT(*) TOTAL_RECORD FROM `GROUP`
+		]]>
+		<return-scalar column="TOTAL_RECORD" type="int" />
+	</sql-query>
+	
+	<sql-query name="SQL_GET_GROUP_LIST">
+		<![CDATA[
+		  SELECT GROUP_ID,GROUPNAME,DESCRIPTION,STATUS,CREATEDBY,CREATEDAT,MODIFIEDBY,MODIFIEDAT
+          FROM `GROUP`
+		]]>
+		<return class="com.prp.models.Group" />
+	</sql-query>
+	
+</hibernate-mapping>

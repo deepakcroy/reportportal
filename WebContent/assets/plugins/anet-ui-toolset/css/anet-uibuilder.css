@@ -1,0 +1,38 @@
+.anet-row{padding:5px;}
+.anet-row label{display: inline-block;width: 150px;font-size: 10px;vertical-align: top;}
+.anet-row input,select{min-width:150px;}
+
+.anet-hidden{display:none;}
+.anet-btn{margin-right:5px;}
+.anet-loader{background:url('../img/loading35.gif') no-repeat;display:inline-block; min-height:15px;min-width:25px;}
+.anet-toolbar{}
+.anet-addrow{}
+.anet-editable{border:1px solid #dadada; min-height:40px; margin:5px 0px;}
+.anet-editable:hover{border:1px dashed red;}
+.anet-editable-active{border:1px dashed red;}
+
+.anet-uibuilder-layout{}
+.anet-uibuilder-wrapper{width:65%;float:left;}
+.anet-uibuilder-properties{width:300px;float:right; }
+.anet-uibuilder-properties table{font-size:10px;}
+.anet-uibuilder-properties select{font-size:10px; margin-bottom:0px!Important;min-height: 25px!Important; height: 25px!Important;}
+.anet-uibuilder-properties select option{font-size:10px;}
+.anet-uibuilder-properties input{font-size:10px; margin-bottom:0px!Important;min-height: 25px!Important; height: 25px!Important;padding:0px 8px;border:none;border-radius:0px;border-bottom:1px solid #d8d8d8; background-color:transparent;
+box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;}
+
+.anet-uibuilder-properties .table th, .table td{padding:4px 8px;}
+.anet-uibuilder-properties .tab-content{padding-top: 0px;}
+
+.anet-property-table{}
+.anet-property-key{width:50%;}
+.anet-property-value{width:50%;}
+
+.anet-listbox {border-radius:5px; color:#000; min-width:200px; max-width:220px; min-height:110px; vertical-align:top;}
+.anet-shuttle {border-radius:5px; color:#000; min-width:200px; max-width:220px; min-height:110px; vertical-align:top;}
+.anet-shuttle-ctrl {display:block; min-width:40px!Important; width:40px!Important; font-size:16px; font-weight:bold; padding:0px!Important; margin-bottom:2px; text-align:center;}
+.anet-shuttle-ctrl-wrapper{display:inline-block; margin-left:4px; margin-right:4px;}
+
+.anet-lookup-btn {background:url(../img/lookup.png) no-repeat; background-position:center; width:16px; height:16px; display:inline-block; /*border:1px solid silver; padding: 0px 0px 3px 4px;*/ margin-left:4px; /*margin-top:2px; position:absolute; border-radius:5px;*/cursor:pointer;}
+
+.anet-property-ds-lookup{width:75%;}
+.anet-property-ds-lookup-btn{background:url(../img/lookup.png) no-repeat; background-position:center; width:16px; height:16px; display:inline-block; /*border:1px solid silver; padding: 0px 0px 3px 4px;*/ margin-left:4px; /*margin-top:2px; position:absolute; border-radius:5px;*/cursor:pointer;}

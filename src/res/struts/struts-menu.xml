@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="menu-pkg" namespace="/setup/menu"   extends="hibernate-default,auth-hib-pkg">
+		<action name="list" method="list" class="com.prp.actions.MenuAction">
+			<result name="success">/views/menu/index.jsp</result>
+		</action>
+		<action name="saveorupdateform" method="saveOrUpdateForm" class="com.prp.actions.MenuAction">
+			<result name="input">/views/menu/createoredit.jsp</result>
+		</action>
+		<action name="saveorupdate" method="saveOrUpdate" class="com.prp.actions.MenuAction"/>
+		
+		<action name="edit" method="edit" class="com.prp.actions.MenuAction">
+			<result name="input">/views/menu/createoredit.jsp</result>
+		</action>
+		<action name="create" method="create" class="com.prp.actions.MenuAction">
+			<result name="input">/views/menu/createoredit.jsp</result>
+		</action>
+	
+	</package>
+</struts>
